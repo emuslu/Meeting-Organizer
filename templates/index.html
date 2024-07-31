@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title">Welcome to Meeting Organizer</h1>
+    <h2 class="create_message">{{create_message}}</h2>
+    <form action="/create" method="post">
+        <label for="subject">Subject:</label><br>
+        <input type="text" id="subject" name="subject"><br>
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date"><br>
+        <label for="start_time">Start time:</label><br>
+        <input type="time" id="start_time" name="start_time"><br>
+        <label for="end_time">End time:</label><br>
+        <input type="time" id="end_time" name="end_time"><br>
+        <label for="participants">Participants:</label><br>
+        <input type="text" id="participants" name="participants"><br>
+        <br>
+        <input type="submit" value="Create">
+    </form>
+    <br>
+    <br>
+    <br>
+    <h2 class="update_message">{{update_message}}</h2>
+    <br>
+    {% for meeting in meetings %}
+        <div class='parent'>
+            <div class='child inline-block-child'>
+                <a>
+                    <h2>Subject: {{ meeting['subject'] }}</h2>
+                    <h2>Date: {{ meeting['date'] }}</h2>
+                    <h2>Time: {{ meeting['start_time'] }} - {{ meeting['end_time'] }}</h2>
+                    <h2>Participants: {{ meeting['participants'] }}</h2>
+                </a>
+                <span class="badge badge-primary">{{ meeting['created'] }}</span>
+                <form action="/delete/{{meeting['id']}}" method="post">
+                    <input type="submit" value="Delete">
+                </a>
+            </div>
+            <div class='child inline-block-child'>
+                <form action="/meetings/{{meeting['id']}}" method="post">
+                    <label for="subject">Subject:</label><br>
+                    <input type="text" id="subject" name="subject"><br>
+                    <label for="date">Date:</label><br>
+                    <input type="date" id="date" name="date"><br>
+                    <label for="start_time">Start time:</label><br>
+                    <input type="time" id="start_time" name="start_time"><br>
+                    <label for="end_time">End time:</label><br>
+                    <input type="time" id="end_time" name="end_time"><br>
+                    <label for="participants">Participants:</label><br>
+                    <input type="text" id="participants" name="participants"><br>
+                    <br>
+                    <input type="submit" value="Update">
+                </form>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

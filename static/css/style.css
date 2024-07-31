@@ -1,0 +1,14 @@
+.parent {
+    padding: 1rem;
+    display: flex;
+  }
+.inline-block-child {
+    display: inline-block;
+    flex:auto;
+  }
+.update_message {
+    color: red;
+}
+.create_message {
+    color: red;
+}
