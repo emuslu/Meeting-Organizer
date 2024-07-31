@@ -34,7 +34,7 @@
                 <span class="badge badge-primary">{{ meeting['created'] }}</span>
                 <form action="/delete/{{meeting['id']}}" method="post">
                     <input type="submit" value="Delete">
-                </a>
+                </form>
             </div>
             <div class='child inline-block-child'>
                 <form action="/meetings/{{meeting['id']}}" method="post">
